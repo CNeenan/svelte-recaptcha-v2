@@ -67,6 +67,9 @@ let openObserver = null;
 
 let closeObserver = null;
 /*observer tracker*/
+    
+let googleRecaptchaDiv = null;
+/*google recaptcha div*/
 
 /*---------------------------------------------| dispatchers |--*/
 
@@ -219,7 +222,7 @@ const captcha = {
             */
 
         window.grecaptcha.ready(() => {
-            instanceId = grecaptcha.render("googleRecaptchaDiv", {
+            instanceId = grecaptcha.render(googleRecaptchaDiv, {
                 "badge": badge,
                 "sitekey": sitekey,
                 "callback": eventEmitters.onSuccess,
@@ -328,7 +331,7 @@ const sleep = (seconds) =>
 <!----------------------------------------------------------------┐
                                                                 └-->
 
-<div id="googleRecaptchaDiv" class="g-recaptcha" />
+<div id="googleRecaptchaDiv" class="g-recaptcha" bind:this={googleRecaptchaDiv} />
 
 <!--------------------------------------------------- comments ----;
 
